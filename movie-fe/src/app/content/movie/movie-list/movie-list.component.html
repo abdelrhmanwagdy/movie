@@ -1,0 +1,58 @@
+<div class="movie-container">
+  <!-- Search Bar -->
+
+
+  <!-- Loading Spinner -->
+  <div *ngIf="isLoading" class="loading">
+    <p>Loading...</p>
+  </div>
+
+  <div *ngIf="showMessage" class="message-box" [ngClass]="removeMessageType">
+    {{ errorMessage }}
+  </div>
+
+
+  <!-- Movie Table with mat-table -->
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Poster Column -->
+    <ng-container matColumnDef="poster">
+      <th mat-header-cell *matHeaderCellDef> Poster </th>
+      <td mat-cell *matCellDef="let movie">
+        <img [src]="(movie.Poster === 'N/A' || !movie.Poster) ? './assets/img/movie-icon.jpg' : movie.Poster" alt="{{ movie.Title }}" class="movie-poster" />
+      </td>
+    </ng-container>
+  
+    <!-- Title Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Title </th>
+      <td mat-cell *matCellDef="let movie">{{ movie.Title }}</td>
+    </ng-container>
+  
+    <!-- Year Column -->
+    <ng-container matColumnDef="year">
+      <th mat-header-cell *matHeaderCellDef> Year </th>
+      <td mat-cell *matCellDef="let movie">{{ movie.Year }}</td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let movie">
+        <button mat-raised-button color="warn" (click)="viewDetails(movie.Id)" class="action-button remove-button">
+          View Details
+        </button>
+        <button mat-raised-button *ngIf="userRole.includes('ROLE_ADMIN')" color="warn" (click)="removeMovie(movie.Id)" class="action-button remove-button">
+          Remove
+        </button>
+      </td>
+    </ng-container>
+  
+  
+    <!-- Table Header and Rows -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSize]="10" [length]="paginatorTotal$" (page)="pageChanged($event)">
+  </mat-paginator>
+</div>

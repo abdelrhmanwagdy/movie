@@ -1,0 +1,13 @@
+<div *ngIf="isLoading" class="loading">
+  <p>Loading movie details...</p>
+</div>
+
+<div *ngIf="movie" class="movie-details">
+  <h2>{{ movie.title }}</h2>
+  <img [src]="(movie.poster === 'N/A' || !movie.poster) ? './assets/img/movie-icon.jpg' : movie.poster" alt="{{ movie.title }}" />
+  <p><strong>Year:</strong> {{ movie.year }}</p>
+  <p><strong>Type:</strong> {{ movie.type }}</p>
+
+
+  <button mat-button color="accent" routerLink="/movies">Back to Movies</button>
+</div>

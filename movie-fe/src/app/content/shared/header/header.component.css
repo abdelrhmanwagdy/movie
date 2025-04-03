@@ -1,0 +1,39 @@
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Distributes left, center, and right elements */
+    align-items: center; /* Centers items vertically */
+    padding: 10px 20px;
+    background-color: #333;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+    justify-content: center; 
+  }
+  
+  .nav-links li {
+    display: inline;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .nav-right {
+    margin-left: auto;
+  }
+  
+  .logout-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }

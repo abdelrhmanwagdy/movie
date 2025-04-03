@@ -1,0 +1,17 @@
+<header *ngIf="isAuthenticated">
+    <nav class="navbar">
+      <ul class="nav-links">        
+        <!-- Show these only if the user is a VIEWER -->
+        <li *ngIf="isViewer()"><a routerLink="/movies">Movies</a></li>
+        
+        <!-- Show these only if the user is an ADMIN -->
+        <li *ngIf="isAdmin()"><a routerLink="/movies">Movies</a></li>
+        <li *ngIf="isAdmin()"><a routerLink="/admin-movies">Admin Movies</a></li>
+        
+
+        <div *ngIf="isAuthenticated" class="nav-right">
+          <button class="logout-btn" (click)="logout()">Logout</button>
+        </div>
+      </ul>
+    </nav>
+  </header>
