@@ -15,6 +15,10 @@ Ensure you have the following installed:
 spring.datasource.url=jdbc:mysql://localhost:3306/your_db
 spring.datasource.username=root
 spring.datasource.password=your_password
+
+omdb.api.key=
+security.jwt.token.secret-key=
+
 spring.jpa.hibernate.ddl-auto=create  # This will create the tables (only run once) ... it is better to comment it after the app run for the first time 
 
 2. **Execute the SQL file**  
